@@ -1,0 +1,29 @@
+header {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+nav{
+  position: relative;
+  z-index: 200;
+}
+
+nav ul{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-link{
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: .3s ease;
+
+  &:hover{
+    opacity: .4;
+  }
+}

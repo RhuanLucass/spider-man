@@ -1,0 +1,133 @@
+.btn {
+  display: inline-block;
+  color: $white-light;
+  transition: 0.6s ease;
+  padding: 16px 40px 16px 40px;
+  text-align: center;
+  border: 0;
+  cursor: pointer;
+  background: linear-gradient(189.8deg, #ea1d22 -4%, #640204 104%);
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform: skewX(-7deg);
+
+  position: relative;
+  z-index: 150;
+
+  @include typeface-1(h7, desktop);
+  @include responsive(s) {
+    @include typeface-1(h7, mobile);
+
+    padding: 12px 28px 12px 28px;
+  }
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: -100%;
+    left: 50%;
+
+    width: 3px;
+    height: 0%;
+    border-radius: 2px;
+
+    background: linear-gradient(
+      180deg,
+      rgba(235, 238, 242, 0) 0%,
+      #ebeef2 100%
+    );
+    opacity: 0;
+    transition: 0.7s ease;
+  }
+
+  &:hover {
+    transform: skewX(-7deg) scale(1.05);
+
+    &::after {
+      top: -55%;
+      opacity: 1;
+      height: 70%;
+    }
+  }
+}
+
+.btn-secondary {
+  display: inline-block;
+  color: $white-light;
+  transition: 0.6s ease;
+  padding: 30px 32px 30px 150px;
+  text-align: center;
+  background: rgba(35, 44, 62, 0.6);
+  backdrop-filter: blur(6px);
+  position: relative;
+  left: -100px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform: skewX(-6deg);
+  transition: 0.4s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: skewX(-7deg) scale(1.05);
+
+    &::after {
+      top: -55%;
+      opacity: 1;
+      height: 70%;
+    }
+  }
+
+  @include typeface-1(h7, desktop);
+  @include responsive(s) {
+    @include typeface-1(h7, mobile);
+    padding: 12px 28px;
+  }
+}
+
+a:not(.div-play a) {
+  @include typeface-2(p3, desktop);
+  text-decoration: none;
+  color: $white-light;
+  transition: 0.5s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+input {
+  accent-color: $primary-normal;
+}
+
+input,
+select,
+option,
+textarea {
+  padding: 10px 12px;
+  background-color: $black-light;
+  border: 0;
+  border-radius: 4px;
+  color: $white-light;
+  width: 100%;
+
+  @include typeface-2(p3, desktop);
+}
+
+input[type="date"],
+select,
+option {
+  height: 44px;
+}
+
+/*
+select{
+  appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+*/

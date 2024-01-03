@@ -1,0 +1,487 @@
+// Layout of project
+
+// Container-devices
+$container-xl: 1440px;
+$container-l: 1268px;
+$container-m: 960px;
+$container-s: 620px;
+$container-xs: 340px;
+$gutter: 32px;
+
+// Mixin of media-queries
+@mixin responsive($device) {
+  @if $device == xl {
+    // For resolutions upper 1440px
+    @media screen and (min-width: $container-xl) {
+      @content;
+    }
+  } @else if $device == ul {
+    // For resolutions upper 1268px
+    @media screen and (min-width: $container-l) {
+      @content;
+    }
+  } @else if $device == l {
+    // For resolutions between 1440px and 1268px
+    @media screen and (max-width: $container-xl) and (min-width: $container-l) {
+      @content;
+    }
+  } @else if $device == m {
+    // For resolutions between 1268px and 620px
+    @media screen and (max-width: $container-l) and (min-width: $container-s) {
+      @content;
+    }
+  } @else if $device == s {
+    // For resolutions less than 960px
+    @media screen and (max-width: $container-m) {
+      @content;
+    }
+  } @else if $device == k {
+    // Para resoluções entre 1200px e 960px
+    @media screen and (max-width: 1200px) and (min-width: 960px) {
+      @content;
+    }
+  } @else if $device == xs {
+    // For resolutions less than 340px
+    @media screen and (max-width: $container-xs) {
+      @content;
+    }
+  }
+}
+
+@function grid($col, $total: 12) {
+  @return (calc($col / $total)) * 100%;
+}
+
+@for $i from 1 through 12 {
+  .grid-#{$i} {
+    width: calc(#{grid($i)} - #{$gutter});
+    margin: calc($gutter / 2);
+
+    padding: 16px 0px;
+    float: left;
+
+    @include responsive(s) {
+      width: calc(100% - #{$gutter});
+      float: none;
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  .grid-nobreak-#{$i} {
+    width: calc(#{grid($i)} - #{$gutter});
+    margin: calc($gutter / 2);
+
+    padding: 16px 0px;
+    float: left;
+  }
+}
+
+.container {
+  max-width: $container-l;
+  margin: 0 auto;
+
+  padding: 128px 24px;
+
+  /*display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;*/
+  //overflow: hidden;
+  //position: sticky;
+
+  // clearfix
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @include responsive(s) {
+    flex-direction: column;
+
+    padding: 96px 16px;
+  }
+}
+
+.disappear {
+  @include responsive(s) {
+    display: none;
+  }
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+.zindex-1 {
+  z-index: -1;
+}
+
+.row {
+  // clearfix
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.h-100 {
+  height: 100vh;
+}
+
+.h-100p {
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-start-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+.flex-end-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+}
+.flex-start-column {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-center-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flex-space {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  @include responsive(s) {
+    //flex-direction: column;
+    //align-items: flex-start;
+  }
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.relative {
+  position: relative;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-item-1 {
+  flex: 1 1 360px;
+}
+
+.flex-item-2 {
+  flex: 2 1 360px;
+}
+
+.flex-item-3 {
+  flex: 3 1 360px;
+}
+
+.flex-item-4 {
+  flex: 4 1 360px;
+}
+
+.flex-item-5 {
+  flex: 5 1 360px;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+// Width's
+.w-auto {
+  width: auto;
+}
+.h-auto {
+  height: auto !important;
+}
+.w-100 {
+  width: 100%;
+}
+.w-75 {
+  width: 75%;
+}
+.w-50 {
+  width: 50%;
+}
+.w-25 {
+  width: 25%;
+}
+
+.bb-black {
+  border-bottom: 1px solid $black-light;
+}
+
+.bt-black {
+  border-top: 1px solid $black-light;
+}
+
+.bl-black {
+  border-left: 1px solid $black-light;
+}
+
+.br-black {
+  border-right: 1px solid $black-light;
+}
+
+.bg-gray {
+  background-color: $black-normal;
+}
+
+.bb-gray {
+  border-bottom: 2px solid $black-normal;
+}
+
+.bt-gray {
+  border-top: 2px solid $black-normal;
+}
+
+.bl-gray {
+  border-left: 2px solid $black-normal;
+}
+
+.br-gray {
+  border-right: 2px solid $black-normal;
+}
+
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+.screen-loading {
+  width: 100%;
+  height: 100vh;
+  background-color: $black-dark;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.loader-spider {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    backdrop-filter: blur(0px);
+    width: 100%;
+    height: 300%;
+    background: linear-gradient(180deg, rgba(4, 12, 27, 0) 0%, #040c1b 60%);
+    animation: loader-spider 3s ease forwards;
+  }
+}
+
+@keyframes loader-spider {
+  0% {
+    top: -150%;
+    left: 0;
+    backdrop-filter: blur(16px);
+  }
+  100% {
+    top: 00%;
+    left: 0%;
+    backdrop-filter: blur(0px);
+  }
+}
+
+.bg-slider {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  overflow: hidden;
+  z-index: -1;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      180deg,
+      #040c1b 7.81%,
+      rgba(4, 12, 27, 0.7) 35.42%,
+      #040c1b 89.06%
+    );
+  }
+
+  img {
+    position: absolute;
+  }
+}
+
+.hero {
+  max-width: 1280px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.text-spider-hero {
+  font-size: 200px;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  text-shadow: 0px 10px 31px rgba(0, 0, 0, 0.6);
+
+  @include responsive(s) {
+    font-size: 112px;
+  }
+
+  @include responsive(k) {
+    font-size: 104px;
+  }
+}
+
+.spider-hero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.5);
+  z-index: 100;
+
+  @include responsive(s) {
+    transform: translate(-50%, -50%) scale(2.5);
+  }
+}
+
+.cta {
+  position: absolute;
+  top: 55%;
+  left: 10%;
+  z-index: 150;
+
+  @include responsive(s) {
+    top: 70%;
+  }
+}
+
+.div-play {
+  position: absolute;
+  top: 60%;
+  right: 40%;
+  z-index: 150;
+
+  a {
+    display: inline-block;
+  }
+}
+
+.cta-play {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: rgba(17, 25, 41, 0.5);
+  backdrop-filter: blur(8px);
+  border: 2px solid #111929;
+  transition: 0.7s ease;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    z-index: -1;
+    background-image: url("../../svg/icon-play.svg");
+    background-size: cover;
+  }
+
+  &:hover {
+    backdrop-filter: blur(3px);
+    transform: scale(1.2);
+  }
+
+  h6 {
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    left: 130%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.slider-points {
+  position: absolute;
+  top: 50%;
+  right: 3%;
+}
+
+.space-point {
+  padding: 12px;
+  margin: 24px 0;
+  cursor: pointer;
+  position: relative;
+  z-index: 200;
+}
+
+.point {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: 0.7s ease;
+}
+
+.active-point {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: scale(2);
+}
+
+.img-slider {
+  transition: 0.7s ease;
+}
