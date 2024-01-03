@@ -11,7 +11,7 @@ This project was created in honor of the iconic Spider-Man through the FrontPush
 
 ## Project view
 
-![Preview](https://github.com/RhuanLucass/nubank-project/blob/main/img/spider-man.gif)
+![Preview](https://github.com/RhuanLucass/spider-man/blob/main/img/spider-man.gif)
 
 ## Technologies used
 
